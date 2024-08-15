@@ -29,7 +29,7 @@ const brands = [
   "Olympus",
 ];
 
-const allCategories = ["Laptop", "Desktop", "Monitor", "Camera"]
+const allCategories = ["Laptop", "Desktop", "Monitor", "Camera"];
 
 const Home = () => {
   const axiosPublic = useAxiosPublic();
@@ -41,19 +41,25 @@ const Home = () => {
   const [sortDate, setSortDate] = useState("");
 
   console.log(brandName);
- 
 
   const { data: products = [], isLoading } = useQuery({
-    queryKey: ["products", search, brandName, category, priceRange],
+    queryKey: [
+      "products",
+      search,
+      brandName,
+      category,
+      priceRange,
+      sortPrice,
+      sortDate,
+    ],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
-        `/products?search=${search}&brand=${brandName}&category=${category}&priceRange=${priceRange}`
+        `/products?search=${search}&brand=${brandName}&category=${category}&priceRange=${priceRange}&sortPrice=${sortPrice}&sortDate=${sortDate}`
       );
       return data;
     },
   });
-
-
+console.log(sortPrice);
   const handleSearch = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -123,20 +129,21 @@ const Home = () => {
         </div>
         <div>
           <Select label="Price Range" onChange={handlePriceRange}>
-            <Option value="25000-40000">25000 - 40000 Tk</Option>
-            <Option value="41000-60000">41000 - 60000 Tk</Option>
-            <Option value="61000-90000">61000 - 90000 Tk</Option>
+            <Option value="25000-35000">25000 - 35000 Tk</Option>
+            <Option value="41000-50000">41000 - 50000 Tk</Option>
+            <Option value="51000-60000">51000 - 60000 Tk</Option>
+            <Option value="61000-85000">61000 - 85000 Tk</Option>
           </Select>
         </div>
         <div>
           <Select label="Sort By Price" onChange={handleSortPrice}>
-            <Option value="low to high">Low to High</Option>
-            <Option value="high to low">High to Low</Option>
+            <Option value="low-to-high">Low to High</Option>
+            <Option value="high-to-low">High to Low</Option>
           </Select>
         </div>
         <div>
           <Select label="Sort By Date" onChange={handleSortDate}>
-            <Option value="newest first">Newest First</Option>
+            <Option value="newest-first">Newest First</Option>
           </Select>
         </div>
       </div>

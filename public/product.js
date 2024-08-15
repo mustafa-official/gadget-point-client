@@ -8,7 +8,7 @@ const products = [
         "price": 75999,
         "category": "Laptop",
         "ratings": 4.8,
-        "date_time": "7/15/2024, 2:05 AM"
+        "date_time": "7/15/2024, 8:05 PM"
     },
     {
         "name": "HP Spectre x360",
@@ -18,7 +18,7 @@ const products = [
         "price": 72999,
         "category": "Laptop",
         "ratings": 4.7,
-        "date_time": "7/27/2024, 2:06 AM"
+        "date_time": "7/27/2024, 11:06 PM"
     },
     {
         "name": "Dell XPS 15",
@@ -28,7 +28,7 @@ const products = [
         "price": 79999,
         "category": "Laptop",
         "ratings": 4.9,
-        "date_time": "8/15/2024, 2:07 AM"
+        "date_time": "7/25/2024, 2:07 PM"
     },
     {
         "name": "ASUS VivoBook S14",
@@ -38,7 +38,7 @@ const products = [
         "price": 48999,
         "category": "Laptop",
         "ratings": 4.5,
-        "date_time": "3/9/2024, 2:08 AM"
+        "date_time": "3/9/2024, 10:08 PM"
     },
     {
         "name": "Acer Nitro 5",
@@ -48,7 +48,7 @@ const products = [
         "price": 64999,
         "category": "Laptop",
         "ratings": 4.6,
-        "date_time": "6/15/2024, 2:09 AM"
+        "date_time": "6/15/2024, 4:29 PM"
     },
     {
         "name": "Apple MacBook Pro 14",
@@ -58,7 +58,7 @@ const products = [
         "price": 79900,
         "category": "Laptop",
         "ratings": 4.9,
-        "date_time": "8/10/2024, 2:10 AM"
+        "date_time": "8/1/2024, 7:51 PM"
     },
     {
         "name": "Microsoft Surface Laptop 5",
@@ -68,7 +68,7 @@ const products = [
         "price": 68999,
         "category": "Laptop",
         "ratings": 4.7,
-        "date_time": "5/17/2024, 2:11 AM"
+        "date_time": "5/17/2024, 9:25 PM"
     },
     {
         "name": "HP Pavilion 14",
@@ -78,7 +78,7 @@ const products = [
         "price": 32999,
         "category": "Laptop",
         "ratings": 4.2,
-        "date_time": "8/15/2024, 2:12 AM"
+        "date_time": "7/10/2024, 10:34 PM"
     },
     {
         "name": "Lenovo Yoga 7i",
@@ -88,7 +88,7 @@ const products = [
         "price": 69999,
         "category": "Laptop",
         "ratings": 4.6,
-        "date_time": "7/28/2024, 2:13 AM"
+        "date_time": "7/28/2024, 8:11 PM"
     },
     {
         "name": "ASUS TUF Gaming F15",
@@ -98,7 +98,7 @@ const products = [
         "price": 74999,
         "category": "Laptop",
         "ratings": 4.7,
-        "date_time": "7/29/2024, 2:14 AM"
+        "date_time": "7/29/2024, 11:23 PM"
     },
     {
         "name": "HP Pavilion Gaming Desktop",
@@ -108,7 +108,7 @@ const products = [
         "price": 65999,
         "category": "Desktop",
         "ratings": 4.5,
-        "date_time": "7/23/2024, 2:15 AM"
+        "date_time": "7/23/2024, 12:39 PM"
     },
     {
         "name": "Dell OptiPlex 7080",
@@ -118,7 +118,7 @@ const products = [
         "price": 74999,
         "category": "Desktop",
         "ratings": 4.7,
-        "date_time": "8/3/2024, 2:16 AM"
+        "date_time": "8/3/2024, 2:28 PM"
     },
     {
         "name": "Apple iMac 24-inch",
@@ -128,7 +128,7 @@ const products = [
         "price": 84999,
         "category": "Desktop",
         "ratings": 4.8,
-        "date_time": "6/8/2024, 2:17 AM"
+        "date_time": "6/8/2024, 7:41 PM"
     },
     {
         "name": "Lenovo ThinkCentre M720",
@@ -138,7 +138,7 @@ const products = [
         "price": 45999,
         "category": "Desktop",
         "ratings": 4.3,
-        "date_time": "8/19/2024, 2:18 AM"
+        "date_time": "6/13/2024, 3:53 PM"
     },
     {
         "name": "Acer Aspire TC-885",
@@ -148,7 +148,7 @@ const products = [
         "price": 32999,
         "category": "Desktop",
         "ratings": 4.2,
-        "date_time": "7/15/2024, 2:19 AM"
+        "date_time": "7/15/2024, 8:29 PM"
     },
     {
         "name": "ASUS ROG Strix GA15",
@@ -158,7 +158,7 @@ const products = [
         "price": 89999,
         "category": "Desktop",
         "ratings": 4.9,
-        "date_time": "6/21/2024, 2:20 AM"
+        "date_time": "6/21/2024, 4:27 PM"
     },
     {
         "name": "CyberPowerPC Gamer Xtreme VR",
@@ -168,7 +168,7 @@ const products = [
         "price": 57999,
         "category": "Desktop",
         "ratings": 4.6,
-        "date_time": "5/16/2024, 2:21 AM"
+        "date_time": "5/16/2024, 11:29 PM"
     },
     {
         "name": "MSI Trident 3 10SI-002US",
@@ -178,7 +178,7 @@ const products = [
         "price": 69999,
         "category": "Desktop",
         "ratings": 4.7,
-        "date_time": "7/18/2024, 2:22 AM"
+        "date_time": "7/18/2024, 4:36 PM"
     },
     {
         "name": "HP EliteDesk 800 G6",
@@ -188,7 +188,7 @@ const products = [
         "price": 77999,
         "category": "Desktop",
         "ratings": 4.8,
-        "date_time": "4/11/2024, 2:23 AM"
+        "date_time": "4/11/2024, 2:36 PM"
     },
     {
         "name": "Lenovo IdeaCentre 3",
@@ -198,7 +198,7 @@ const products = [
         "price": 28999,
         "category": "Desktop",
         "ratings": 4.1,
-        "date_time": "6/19/2024, 2:24 AM"
+        "date_time": "6/19/2024, 7:36 PM"
     },
     {
         "name": "Dell UltraSharp U2720Q",
@@ -208,7 +208,7 @@ const products = [
         "price": 64999,
         "category": "Monitor",
         "ratings": 4.8,
-        "date_time": "8/7/2024, 2:25 AM"
+        "date_time": "8/7/2024, 10:36 PM"
     },
     {
         "name": "ASUS ROG Swift PG259QN",
@@ -218,7 +218,7 @@ const products = [
         "price": 74999,
         "category": "Monitor",
         "ratings": 4.9,
-        "date_time": "7/12/2024, 2:26 AM"
+        "date_time": "7/12/2024, 9:36 PM"
     },
     {
         "name": "Samsung Odyssey G7",
@@ -228,7 +228,7 @@ const products = [
         "price": 56999,
         "category": "Monitor",
         "ratings": 4.7,
-        "date_time": "6/13/2024, 2:27 AM"
+        "date_time": "6/13/2024, 7:36 PM"
     },
     {
         "name": "LG 34WK95U-W",
@@ -238,7 +238,7 @@ const products = [
         "price": 74999,
         "category": "Monitor",
         "ratings": 4.8,
-        "date_time": "8/4/2024, 2:28 AM"
+        "date_time": "8/4/2024, 9:36 PM"
     },
     {
         "name": "Acer Predator XB273K",
@@ -248,7 +248,7 @@ const products = [
         "price": 69999,
         "category": "Monitor",
         "ratings": 4.6,
-        "date_time": "8/14/2024, 2:29 AM"
+        "date_time": "8/14/2024, 10:38 PM"
     },
     {
         "name": "BenQ PD3220U",
@@ -258,7 +258,7 @@ const products = [
         "price": 67999,
         "category": "Monitor",
         "ratings": 4.7,
-        "date_time": "6/19/2024, 2:30 AM"
+        "date_time": "6/19/2024, 11:15 PM"
     },
     {
         "name": "HP Omen X 27",
@@ -268,7 +268,7 @@ const products = [
         "price": 59999,
         "category": "Monitor",
         "ratings": 4.5,
-        "date_time": "6/18/2024, 2:31 AM"
+        "date_time": "6/18/2024, 9:17 PM"
     },
     {
         "name": "Dell S2721DGF",
@@ -278,7 +278,7 @@ const products = [
         "price": 54999,
         "category": "Monitor",
         "ratings": 4.6,
-        "date_time": "8/7/2024, 2:32 AM"
+        "date_time": "8/7/2024, 10:15 PM"
     },
     {
         "name": "LG UltraGear 27GN950",
@@ -288,7 +288,7 @@ const products = [
         "price": 74999,
         "category": "Monitor",
         "ratings": 4.8,
-        "date_time": "8/2/2024, 2:33 AM"
+        "date_time": "8/2/2024, 3:15 PM"
     },
     {
         "name": "ASUS ProArt PA32UCX",
@@ -298,7 +298,7 @@ const products = [
         "price": 89999,
         "category": "Monitor",
         "ratings": 4.9,
-        "date_time": "7/17/2024, 2:34 AM"
+        "date_time": "7/17/2024, 2:34 PM"
     },
     {
         "name": "ViewSonic Elite XG270QG",
@@ -308,7 +308,7 @@ const products = [
         "price": 69999,
         "category": "Monitor",
         "ratings": 4.7,
-        "date_time": "8/10/2024, 2:35 AM"
+        "date_time": "7/3/2024, 12:15 PM"
     },
     {
         "name": "Philips 275E1S",
@@ -318,7 +318,7 @@ const products = [
         "price": 45999,
         "category": "Monitor",
         "ratings": 4.4,
-        "date_time": "8/7/2024, 2:36 AM"
+        "date_time": "8/7/2024, 8:15 PM"
     },
     {
         "name": "AOC CQ32G1",
@@ -328,7 +328,7 @@ const products = [
         "price": 49999,
         "category": "Monitor",
         "ratings": 4.5,
-        "date_time": "8/9/2024, 2:37 AM"
+        "date_time": "8/9/2024, 2:37 PM"
     },
     {
         "name": "BenQ EX3501R",
@@ -338,7 +338,7 @@ const products = [
         "price": 64999,
         "category": "Monitor",
         "ratings": 4.6,
-        "date_time": "8/4/2024, 2:38 AM"
+        "date_time": "8/4/2024, 2:39 PM"
     },
     {
         "name": "Samsung CRG5",
@@ -348,7 +348,7 @@ const products = [
         "price": 54999,
         "category": "Monitor",
         "ratings": 4.4,
-        "date_time": "8/13/2024, 2:39 AM"
+        "date_time": "5/12/2024, 4:39 PM"
     },
     {
         "name": "Canon EOS R5",
@@ -358,7 +358,7 @@ const products = [
         "price": 389999,
         "category": "Camera",
         "ratings": 4.9,
-        "date_time": "8/10/2024, 2:40 AM"
+        "date_time": "8/5/2024, 11:45 PM"
     },
     {
         "name": "Nikon Z6 II",
@@ -368,7 +368,7 @@ const products = [
         "price": 229999,
         "category": "Camera",
         "ratings": 4.7,
-        "date_time": "4/15/2024, 2:41 AM"
+        "date_time": "4/15/2024, 11:45 PM"
     },
     {
         "name": "Sony Alpha A7 III",
@@ -378,7 +378,7 @@ const products = [
         "price": 279999,
         "category": "Camera",
         "ratings": 4.8,
-        "date_time": "7/19/2024, 2:42 AM"
+        "date_time": "7/19/2024, 8:45 PM"
     },
     {
         "name": "Fujifilm X-T4",
@@ -388,7 +388,7 @@ const products = [
         "price": 179999,
         "category": "Camera",
         "ratings": 4.7,
-        "date_time": "7/13/2024, 2:43 AM"
+        "date_time": "7/13/2024, 10:45 PM"
     },
     {
         "name": "Olympus OM-D E-M1 Mark III",
@@ -398,7 +398,7 @@ const products = [
         "price": 149999,
         "category": "Camera",
         "ratings": 4.6,
-        "date_time": "6/5/2024, 2:44 AM"
+        "date_time": "6/17/2024, 7:45 PM"
     }
 
 ]
