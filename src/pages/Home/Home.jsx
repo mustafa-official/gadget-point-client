@@ -40,7 +40,10 @@ const Home = () => {
   const [sortPrice, setSortPrice] = useState("");
   const [sortDate, setSortDate] = useState("");
 
-  console.log(brandName);
+  //for pagination
+  // eslint-disable-next-line no-unused-vars
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const { data: products = [], isLoading } = useQuery({
     queryKey: [
@@ -51,15 +54,28 @@ const Home = () => {
       priceRange,
       sortPrice,
       sortDate,
+      itemsPerPage,
+      currentPage,
     ],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
-        `/products?search=${search}&brand=${brandName}&category=${category}&priceRange=${priceRange}&sortPrice=${sortPrice}&sortDate=${sortDate}`
+        `/products?page=${currentPage}&size=${itemsPerPage}&search=${search}&brand=${brandName}&category=${category}&priceRange=${priceRange}&sortPrice=${sortPrice}&sortDate=${sortDate}`
       );
+
       return data;
     },
   });
-console.log(sortPrice);
+
+  const { data: count = 0 } = useQuery({
+    queryKey: ["pageCount", category],
+    queryFn: async () => {
+      const { data } = await axiosPublic.get(
+        `/page-count?category=${category}`
+      );
+      return data.count;
+    },
+  });
+
   const handleSearch = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -71,6 +87,7 @@ console.log(sortPrice);
   };
   const handleCategory = (event) => {
     setCategory(event);
+    setCurrentPage(1);
   };
   const handlePriceRange = (event) => {
     setPriceRange(event);
@@ -80,6 +97,15 @@ console.log(sortPrice);
   };
   const handleSortDate = (event) => {
     setSortDate(event);
+  };
+
+  //for pagination
+
+  const numberOfPages = Math.ceil(count / itemsPerPage);
+  const pages = [...Array(numberOfPages).keys()].map((element) => element + 1);
+
+  const handlePaginationBtn = (num) => {
+    setCurrentPage(num);
   };
 
   if (isLoading)
@@ -152,6 +178,42 @@ console.log(sortPrice);
           <ProductCard key={product?._id} product={product} />
         ))}
       </div>
+      {/* Pagination button */}
+      {40 > 5 && (
+        <div className="flex justify-center mt-12">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => handlePaginationBtn(currentPage - 1)}
+            className="px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-blue-500  hover:text-white"
+          >
+            <div className="flex items-center -mx-1">
+              <span className="mx-1 text-sm">previous</span>
+            </div>
+          </button>
+
+          {pages.map((btnNum) => (
+            <button
+              onClick={() => handlePaginationBtn(btnNum)}
+              key={btnNum}
+              className={`hidden ${
+                currentPage === btnNum ? "bg-blue-500 text-white" : ""
+              }  px-4 border  mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-blue-500  hover:text-white`}
+            >
+              {btnNum}
+            </button>
+          ))}
+
+          <button
+            disabled={currentPage === numberOfPages}
+            onClick={() => handlePaginationBtn(currentPage + 1)}
+            className="px-4 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-blue-500 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500"
+          >
+            <div className="flex items-center -mx-1">
+              <span className="mx-1 text-sm">Next</span>
+            </div>
+          </button>
+        </div>
+      )}
     </section>
   );
 };
