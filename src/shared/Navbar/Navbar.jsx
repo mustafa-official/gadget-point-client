@@ -1,11 +1,5 @@
-
-
 const Navbar = () => {
-    return (
-        <header>
-            Navbar
-        </header>
-    );
+  return <header>apatoto naii</header>;
 };
 
 export default Navbar;
