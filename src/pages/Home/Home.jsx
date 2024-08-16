@@ -67,10 +67,10 @@ const Home = () => {
   });
 
   const { data: count = 0 } = useQuery({
-    queryKey: ["pageCount", category],
+    queryKey: ["pageCount", search, brandName, category],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
-        `/page-count?category=${category}`
+        `/page-count?category=${category}&brand=${brandName}&search=${search}`
       );
       return data.count;
     },
@@ -81,6 +81,7 @@ const Home = () => {
     const form = e.target;
     const name = form.name.value.toLowerCase();
     setSearch(name);
+    setCurrentPage(1);
   };
   const handleBrandName = (event) => {
     setBrandName(event);
@@ -108,33 +109,33 @@ const Home = () => {
     setCurrentPage(num);
   };
 
-  if (isLoading)
-    return (
-      <div className="flex min-h-[calc(100vh-80px)] justify-center items-center px-6 lg:px-12">
-        <ReactLoading type="spin" color="red" height={40} width={40} />
-      </div>
-    );
+  // if (isLoading)
+  //   return (
+  //     <div className="flex min-h-[calc(100vh-80px)] justify-center items-center px-6 lg:px-12">
+  //       <ReactLoading type="spin" color="red" height={40} width={40} />
+  //     </div>
+  //   );
   return (
     <section>
+      <div className="max-w-md mx-auto">
+        <form onSubmit={handleSearch}>
+          <div className="relative">
+            <input
+              type="text"
+              name="name"
+              className="w-full border h-[41px] shadow p-3 pr-8 rounded-lg border-[#B0BEC5]"
+              placeholder="Search laptop..."
+            />
+            <button
+              className="absolute top-1/2 right-2 hover:scale-125 transition duration-150 ease-in-out transform -translate-x-1/2 -translate-y-1/2"
+              type="submit"
+            >
+              <FiSearch size={18} />
+            </button>
+          </div>
+        </form>
+      </div>
       <div className="flex flex-wrap items-center mt-5 gap-3 sm:gap-2 justify-center">
-        <div>
-          <form onSubmit={handleSearch}>
-            <div className="relative">
-              <input
-                type="text"
-                name="name"
-                className="w-full border h-[41px] shadow p-3 pr-8 rounded-lg border-[#B0BEC5]"
-                placeholder="Search..."
-              />
-              <button
-                className="absolute top-1/2 right-2 hover:scale-125 transition duration-150 ease-in-out transform -translate-x-1/2 -translate-y-1/2"
-                type="submit"
-              >
-                <FiSearch size={18} />
-              </button>
-            </div>
-          </form>
-        </div>
         <div>
           <Select label="Brand Name" onChange={handleBrandName}>
             {brands?.map((brand, index) => (
@@ -173,13 +174,46 @@ const Home = () => {
           </Select>
         </div>
       </div>
+
+      {isLoading && (
+        <div className="flex min-h-[70vh] justify-center items-center px-6 lg:px-12">
+          <ReactLoading type="spin" color="red" height={40} width={40} />
+        </div>
+      )}
+      {products?.length === 0  && !isLoading && (
+        <div className="max-w-sm mx-auto min-h-[65vh] flex flex-col items-center justify-center py-8 px-4 text-center">
+          <svg
+            className="w-12 h-12 dark:text-gray-400 text-gray-700"
+            stroke="currentColor"
+            fill="currentColor"
+            strokeWidth="0"
+            viewBox="0 0 24 24"
+            height="200px"
+            width="200px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="File_Off">
+              <g>
+                <path d="M4,3.308a.5.5,0,0,0-.7.71l.76.76v14.67a2.5,2.5,0,0,0,2.5,2.5H17.44a2.476,2.476,0,0,0,2.28-1.51l.28.28c.45.45,1.16-.26.7-.71Zm14.92,16.33a1.492,1.492,0,0,1-1.48,1.31H6.56a1.5,1.5,0,0,1-1.5-1.5V5.778Z" />
+                <path d="M13.38,3.088v2.92a2.5,2.5,0,0,0,2.5,2.5h3.07l-.01,6.7a.5.5,0,0,0,1,0V8.538a2.057,2.057,0,0,0-.75-1.47c-1.3-1.26-2.59-2.53-3.89-3.8a3.924,3.924,0,0,0-1.41-1.13,6.523,6.523,0,0,0-1.71-.06H6.81a.5.5,0,0,0,0,1Zm4.83,4.42H15.88a1.5,1.5,0,0,1-1.5-1.5V3.768Z" />
+              </g>
+            </g>
+          </svg>
+          <h3 className="text-xl font-medium mt-4 text-gray-700 dark:text-gray-200">
+            Product not found
+          </h3>
+          <p className="text-gray-500 dark:text-gray-400 mt-2">
+            The file you are looking for could not be located.
+          </p>
+        </div>
+      )}
       <div className="grid gap-4 mt-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
         {products?.map((product) => (
           <ProductCard key={product?._id} product={product} />
         ))}
       </div>
       {/* Pagination button */}
-      {40 > 5 && (
+      {count > 8 && (
         <div className="flex justify-center mt-12">
           <button
             disabled={currentPage === 1}
