@@ -10,6 +10,10 @@ const ProductCard = ({ product }) => {
     ratings,
     date_time,
   } = product || {};
+  const formattedDate = new Date(date_time).toLocaleString('en-US', {
+    dateStyle: 'medium',
+    timeStyle: 'short'
+  });
   return (
     <div className="relative  flex items-center justify-center w-full flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
       <a
@@ -52,7 +56,7 @@ const ProductCard = ({ product }) => {
             </span>
           </div>
         </div>
-        <p className="mb-3">Date: {date_time}</p>
+        <p className="mb-3">Date: {formattedDate}</p>
         <a
           href="#"
           className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"

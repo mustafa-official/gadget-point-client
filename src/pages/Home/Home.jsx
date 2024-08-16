@@ -67,10 +67,10 @@ const Home = () => {
   });
 
   const { data: count = 0 } = useQuery({
-    queryKey: ["pageCount", search, brandName, category],
+    queryKey: ["pageCount", search, brandName, category, priceRange],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
-        `/page-count?category=${category}&brand=${brandName}&search=${search}`
+        `/page-count?category=${category}&brand=${brandName}&search=${search}&priceRange=${priceRange}`
       );
       return data.count;
     },
@@ -92,12 +92,15 @@ const Home = () => {
   };
   const handlePriceRange = (event) => {
     setPriceRange(event);
+    setCurrentPage(1);
   };
   const handleSortPrice = (event) => {
     setSortPrice(event);
+    setSortDate("");
   };
   const handleSortDate = (event) => {
     setSortDate(event);
+    setSortPrice("");
   };
 
   //for pagination
@@ -109,14 +112,8 @@ const Home = () => {
     setCurrentPage(num);
   };
 
-  // if (isLoading)
-  //   return (
-  //     <div className="flex min-h-[calc(100vh-80px)] justify-center items-center px-6 lg:px-12">
-  //       <ReactLoading type="spin" color="red" height={40} width={40} />
-  //     </div>
-  //   );
   return (
-    <section>
+    <section className="container mx-auto px-4 mt-28">
       <div className="max-w-md mx-auto">
         <form onSubmit={handleSearch}>
           <div className="relative">
@@ -171,6 +168,7 @@ const Home = () => {
         <div>
           <Select label="Sort By Date" onChange={handleSortDate}>
             <Option value="newest-first">Newest First</Option>
+            <Option value="oldest-first">Oldest First</Option>
           </Select>
         </div>
       </div>
@@ -180,7 +178,7 @@ const Home = () => {
           <ReactLoading type="spin" color="red" height={40} width={40} />
         </div>
       )}
-      {products?.length === 0  && !isLoading && (
+      {products?.length === 0 && !isLoading && (
         <div className="max-w-sm mx-auto min-h-[65vh] flex flex-col items-center justify-center py-8 px-4 text-center">
           <svg
             className="w-12 h-12 dark:text-gray-400 text-gray-700"
@@ -218,7 +216,7 @@ const Home = () => {
           <button
             disabled={currentPage === 1}
             onClick={() => handlePaginationBtn(currentPage - 1)}
-            className="px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-blue-500  hover:text-white"
+            className="px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-indigo-600  hover:text-white"
           >
             <div className="flex items-center -mx-1">
               <span className="mx-1 text-sm">previous</span>
@@ -230,8 +228,8 @@ const Home = () => {
               onClick={() => handlePaginationBtn(btnNum)}
               key={btnNum}
               className={`hidden ${
-                currentPage === btnNum ? "bg-blue-500 text-white" : ""
-              }  px-4 border  mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-blue-500  hover:text-white`}
+                currentPage === btnNum ? "bg-indigo-600 text-white" : ""
+              }  px-4 border  mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-indigo-600  hover:text-white`}
             >
               {btnNum}
             </button>
@@ -240,7 +238,7 @@ const Home = () => {
           <button
             disabled={currentPage === numberOfPages}
             onClick={() => handlePaginationBtn(currentPage + 1)}
-            className="px-4 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-blue-500 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500"
+            className="px-4 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-indigo-600 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500"
           >
             <div className="flex items-center -mx-1">
               <span className="mx-1 text-sm">Next</span>
