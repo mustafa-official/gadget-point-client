@@ -1,6 +1,6 @@
 # Gadget Point
 
-#### It's a Fullstack functionality based Single page website where users can perform some search filtering functionalities. This project will focus on implementing pagination, searching, categorization and sorting of products.
+#### This project is a full-stack single-page application designed to provide users with advanced search and filtering capabilities. It includes features such as pagination, search functionality, product categorization, and sorting. The focus is on delivering a seamless and efficient user experience for managing and exploring products.
 
 Live Link: https://gadget-point-1.web.app
 
