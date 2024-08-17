@@ -6,7 +6,6 @@ import ReactLoading from "react-loading";
 import { Select, Option } from "@material-tailwind/react";
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import useAuth from "../../hooks/useAuth";
 import { ScrollRestoration } from "react-router-dom";
 const brands = [
   "Lenovo",
@@ -114,9 +113,6 @@ const Home = () => {
     setCurrentPage(num);
   };
 
-  const {user} = useAuth();
-  console.log(user);
-
   return (
     <section className="container mx-auto px-4 mt-28">
       <div className="max-w-md mx-auto">
@@ -179,10 +175,11 @@ const Home = () => {
       </div>
 
       {isLoading && (
-        <div className="flex min-h-[60vh] justify-center items-center px-6 lg:px-12">
+        <div className="fixed inset-0 flex justify-center items-center bg-white z-50">
           <ReactLoading type="spin" color="red" height={35} width={35} />
         </div>
       )}
+
       {products?.length === 0 && !isLoading && (
         <div className="max-w-sm mx-auto min-h-[50vh] flex flex-col items-center justify-center py-8 px-4 text-center">
           <svg

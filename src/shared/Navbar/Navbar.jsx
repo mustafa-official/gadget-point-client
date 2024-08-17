@@ -25,13 +25,13 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-[#c9c6c665]  backdrop-blur-md fixed top-0 left-0 right-0  z-50">
-      <div className="container mx-auto py-4 px-4 flex items-center">
+    <header className="bg-[#c9c6c665] h-[70px] flex items-center  backdrop-blur-md fixed top-0 left-0 right-0  z-50">
+      <div className="container mx-auto px-4 flex items-center">
         {/* Logo */}
         <div className="mr-auto md:w-48 flex-shrink-0">
           <Link to="/">
-            <h2 className="text-xl sm:text-2xl text-gray-800 font-extrabold">
-              Gadget <span className="text-red-500">Point</span>
+            <h2 className="text-xl sm:text-2xl text-gray-700 font-extrabold">
+              Gadget <span className="text-red-500 font-bold">Point</span>
             </h2>
           </Link>
         </div>
@@ -58,7 +58,7 @@ const Navbar = () => {
                 <button
                   type="button"
                   id="dropdownToggle"
-                  className="px-2 w-max py-2 flex justify-center items-center rounded-full text-[#333] text-sm border border-gray-300 outline-none hover:bg-gray-100"
+                  className="px-[6px] w-max py-[6px] hover:border hover:border-red-500 flex justify-center items-center rounded-full text-[#333] text-sm border border-gray-300 outline-none bg-gray-100"
                   onClick={handleToggle}
                 >
                   <img
@@ -69,7 +69,7 @@ const Navbar = () => {
                   <span className="hidden sm:flex">{user?.displayName}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-3 h-3 fill-gray-400 inline ml-1"
+                    className="w-[10px] h-[10px] mr-1 fill-gray-600 inline ml-1"
                     viewBox="0 0 24 24"
                   >
                     <path
