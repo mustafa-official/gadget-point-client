@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, ScrollRestoration, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { ImSpinner3 } from "react-icons/im";
@@ -169,6 +169,7 @@ const Register = () => {
           </Link>
         </p>
       </div>
+      <ScrollRestoration></ScrollRestoration>
     </div>
   );
 };

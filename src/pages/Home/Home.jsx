@@ -7,6 +7,7 @@ import { Select, Option } from "@material-tailwind/react";
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import useAuth from "../../hooks/useAuth";
+import { ScrollRestoration } from "react-router-dom";
 const brands = [
   "Lenovo",
   "HP",
@@ -178,7 +179,7 @@ const Home = () => {
       </div>
 
       {isLoading && (
-        <div className="flex min-h-[70vh] justify-center items-center px-6 lg:px-12">
+        <div className="flex min-h-[60vh] justify-center items-center px-6 lg:px-12">
           <ReactLoading type="spin" color="red" height={35} width={35} />
         </div>
       )}
@@ -250,6 +251,7 @@ const Home = () => {
           </button>
         </div>
       )}
+      <ScrollRestoration></ScrollRestoration>
     </section>
   );
 };

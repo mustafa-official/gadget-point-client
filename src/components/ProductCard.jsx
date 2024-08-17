@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { IoMdStar } from "react-icons/io";
+import { ScrollRestoration } from "react-router-dom";
 const ProductCard = ({ product }) => {
   const { name, brand_name, img, description, price, ratings, date_time } =
     product || {};
@@ -62,6 +63,7 @@ const ProductCard = ({ product }) => {
           Buy Now
         </a>
       </div>
+      <ScrollRestoration></ScrollRestoration>
     </div>
   );
 };
