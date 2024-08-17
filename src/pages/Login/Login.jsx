@@ -1,11 +1,52 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
+import { ImSpinner3 } from "react-icons/im";
+import { LiaEyeSlashSolid, LiaEyeSolid } from "react-icons/lia";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const { loginUser, loading, setLoading, googleLogin } = useAuth();
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    try {
+      setLoading(true);
+      await loginUser(email, password);
+      navigate("/");
+      toast.success("Sign In Successful");
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setLoading(true);
+      await googleLogin();
+      navigate("/");
+      toast.success("Sign In Successful");
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+      setLoading(false);
+    }
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <div className="mt-28">
       {/* Form Section */}
-      <div className="max-w-lg w-full mx-auto border-2 border-red-600 rounded-xl p-8">
-        <form>
+      <div className="max-w-lg w-full mx-auto border border-red-600 rounded-xl p-8">
+        <form onSubmit={handleSignIn}>
           {/* Header */}
           <div className="mb-12">
             <h3 className="text-gray-800 text-4xl font-extrabold">Sign In</h3>
@@ -17,7 +58,7 @@ const Login = () => {
             <div className="relative flex items-center">
               <input
                 name="email"
-                type="text"
+                type="email"
                 required
                 className="w-full text-sm border-b border-gray-300 focus:border-gray-800 px-2 py-3 outline-none"
                 placeholder="Enter email"
@@ -31,23 +72,24 @@ const Login = () => {
             <div className="relative flex items-center">
               <input
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 required
                 className="w-full text-sm border-b border-gray-300 focus:border-gray-800 px-2 py-3 outline-none"
                 placeholder="Enter password"
               />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="#bbb"
-                stroke="#bbb"
-                className="w-[18px] h-[18px] absolute right-2 cursor-pointer"
-                viewBox="0 0 128 128"
-              >
-                <path
-                  d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z"
-                  data-original="#000000"
-                ></path>
-              </svg>
+              {showPassword ? (
+                <LiaEyeSlashSolid
+                  color="gray"
+                  onClick={handleShowPassword}
+                  className="text-2xl cursor-pointer"
+                ></LiaEyeSlashSolid>
+              ) : (
+                <LiaEyeSolid
+                  color="gray"
+                  onClick={handleShowPassword}
+                  className="text-2xl cursor-pointer"
+                ></LiaEyeSolid>
+              )}
             </div>
           </div>
 
@@ -58,7 +100,7 @@ const Login = () => {
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
-                className="h-4 w-4 shrink-0 text-red-600 focus:ring-blue-500 border-gray-300 rounded"
+                className="h-4 w-4 shrink-0 text-red-500 focus:ring-blue-500 border-gray-300 rounded"
               />
               <label
                 htmlFor="remember-me"
@@ -70,7 +112,7 @@ const Login = () => {
             <div>
               <a
                 href="#"
-                className="text-red-600 font-semibold text-sm hover:underline"
+                className="text-red-500 font-semibold text-sm hover:underline"
               >
                 Forgot Password?
               </a>
@@ -80,10 +122,15 @@ const Login = () => {
           {/* Sign In Button */}
           <div className="mt-12">
             <button
-              type="button"
-              className="w-full py-3 px-6 text-sm font-semibold tracking-wider rounded-full text-white bg-gray-800 hover:bg-[#222] focus:outline-none"
+              disabled={loading}
+              type="submit"
+              className="disabled:cursor-not-allowed cursor-pointer w-full h-10 px-6 text-sm font-semibold tracking-wider rounded-full text-white bg-gray-800 hover:bg-[#222] focus:outline-none"
             >
-              Continue
+              {loading ? (
+                <ImSpinner3 className="animate-spin m-auto"></ImSpinner3>
+              ) : (
+                "Continue"
+              )}
             </button>
           </div>
 
@@ -97,44 +144,27 @@ const Login = () => {
           {/* Google Sign In Button */}
         </form>
         <button
-          type="button"
-          className="w-full flex items-center justify-center gap-4 py-3 px-6 text-sm font-semibold tracking-wider text-gray-800 border border-gray-300 rounded-full bg-gray-50 hover:bg-gray-100 focus:outline-none"
+          disabled={loading}
+          onClick={handleGoogleSignIn}
+          type="submit"
+          className="disabled:cursor-not-allowed cursor-pointer w-full flex items-center justify-center gap-4 py-3 px-6 text-sm font-semibold tracking-wider text-gray-800 border border-gray-300 rounded-full bg-gray-50 hover:bg-gray-100 focus:outline-none"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20px"
-            className="inline"
-            viewBox="0 0 512 512"
-          >
+          <svg className="w-6 h-6 mx-2" viewBox="0 0 40 40">
             <path
-              fill="#fbbd00"
-              d="M120 256c0-25.367 6.989-49.13 19.131-69.477v-86.308H52.823C18.568 144.703 0 198.922 0 256s18.568 111.297 52.823 155.785h86.308v-86.308C126.989 305.13 120 281.367 120 256z"
-              data-original="#fbbd00"
+              d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
+              fill="#FFC107"
             />
             <path
-              fill="#0f9d58"
-              d="m256 392-60 60 60 60c57.079 0 111.297-18.568 155.785-52.823v-86.216h-86.216C305.044 385.147 281.181 392 256 392z"
-              data-original="#0f9d58"
+              d="M5.25497 12.2425L10.7308 16.2583C12.2125 12.59 15.8008 9.99999 20 9.99999C22.5491 9.99999 24.8683 10.9617 26.6341 12.5325L31.3483 7.81833C28.3716 5.04416 24.39 3.33333 20 3.33333C13.5983 3.33333 8.04663 6.94749 5.25497 12.2425Z"
+              fill="#FF3D00"
             />
             <path
-              fill="#31aa52"
-              d="m139.131 325.477-86.308 86.308a260.085 260.085 0 0 0 22.158 25.235C123.333 485.371 187.62 512 256 512V392c-49.624 0-93.117-26.72-116.869-66.523z"
-              data-original="#31aa52"
+              d="M20 36.6667C24.305 36.6667 28.2167 35.0192 31.1742 32.34L26.0159 27.975C24.3425 29.2425 22.2625 30 20 30C15.665 30 11.9842 27.2359 10.5975 23.3784L5.16254 27.5659C7.92087 32.9634 13.5225 36.6667 20 36.6667Z"
+              fill="#4CAF50"
             />
             <path
-              fill="#3c79e6"
-              d="M512 256a258.24 258.24 0 0 0-4.192-46.377l-2.251-12.299H256v120h121.452a135.385 135.385 0 0 1-51.884 55.638l86.216 86.216a260.085 260.085 0 0 0 25.235-22.158C485.371 388.667 512 324.38 512 256z"
-              data-original="#3c79e6"
-            />
-            <path
-              fill="#cf2d48"
-              d="m352.167 159.833 10.606 10.606 84.853-84.852-10.606-10.606C388.668 26.629 324.381 0 256 0l-60 60 60 60c36.326 0 70.479 14.146 96.167 39.833z"
-              data-original="#cf2d48"
-            />
-            <path
-              fill="#eb4132"
-              d="M256 120V0C187.62 0 123.333 26.629 74.98 74.98a259.849 259.849 0 0 0-22.158 25.235l86.308 86.308C162.883 146.72 206.376 120 256 120z"
-              data-original="#eb4132"
+              d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.7592 25.1975 27.56 26.805 26.0133 27.9758C26.0142 27.975 26.015 27.975 26.0158 27.9742L31.1742 32.3392C30.8092 32.6708 36.6667 28.3333 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
+              fill="#1976D2"
             />
           </svg>
           Continue with Google
@@ -143,7 +173,7 @@ const Login = () => {
           Dont have an account?
           <Link
             to="/sign-up"
-            className="text-red-600 font-semibold hover:underline ml-1 whitespace-nowrap"
+            className="text-red-500 font-semibold hover:underline ml-1 whitespace-nowrap"
           >
             Sign Up
           </Link>

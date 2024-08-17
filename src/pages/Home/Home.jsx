@@ -6,6 +6,7 @@ import ReactLoading from "react-loading";
 import { Select, Option } from "@material-tailwind/react";
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import useAuth from "../../hooks/useAuth";
 const brands = [
   "Lenovo",
   "HP",
@@ -112,6 +113,9 @@ const Home = () => {
     setCurrentPage(num);
   };
 
+  const {user} = useAuth();
+  console.log(user);
+
   return (
     <section className="container mx-auto px-4 mt-28">
       <div className="max-w-md mx-auto">
@@ -120,19 +124,19 @@ const Home = () => {
             <input
               type="text"
               name="name"
-              className="w-full border h-[41px] shadow p-3 pr-8 rounded-lg border-[#B0BEC5]"
-              placeholder="Search laptop..."
+              className="w-full border h-11 p-4 pr-8 rounded-full border-gray-400"
+              placeholder="Search Laptop"
             />
             <button
               className="absolute top-1/2 right-2 hover:scale-125 transition duration-150 ease-in-out transform -translate-x-1/2 -translate-y-1/2"
               type="submit"
             >
-              <FiSearch size={18} />
+              <FiSearch color="gray" size={18} />
             </button>
           </div>
         </form>
       </div>
-      <div className="flex flex-wrap items-center mt-5 gap-3 sm:gap-2 justify-center">
+      <div className="flex flex-wrap items-center mt-5 gap-3 sm:gap-4 justify-center">
         <div>
           <Select label="Brand Name" onChange={handleBrandName}>
             {brands?.map((brand, index) => (
