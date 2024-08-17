@@ -124,7 +124,7 @@ const Home = () => {
             <input
               type="text"
               name="name"
-              className="w-full border h-10 p-4 pr-8 rounded-md border-gray-400"
+              className="w-full border h-11 p-4 pr-8 rounded-md border-gray-400"
               placeholder="Search product name"
             />
             <button

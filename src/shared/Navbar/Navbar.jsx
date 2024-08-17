@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-[#dbdbdb50]  backdrop-blur-md fixed top-0 left-0 right-0  z-50">
+    <header className="bg-[#c9c6c665]  backdrop-blur-md fixed top-0 left-0 right-0  z-50">
       <div className="container mx-auto py-4 px-4 flex items-center">
         {/* Logo */}
         <div className="mr-auto md:w-48 flex-shrink-0">
