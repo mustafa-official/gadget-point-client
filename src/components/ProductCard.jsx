@@ -1,39 +1,31 @@
 import PropTypes from "prop-types";
 import { IoMdStar } from "react-icons/io";
 const ProductCard = ({ product }) => {
-  const {
-    name,
-    brand_name,
-    img,
-    description,
-    price,
-    ratings,
-    date_time,
-  } = product || {};
+  const { name, brand_name, img, description, price, ratings, date_time } =
+    product || {};
   const formattedDate = new Date(date_time).toLocaleString("en-US", {
     dateStyle: "medium",
     timeStyle: "short",
   });
   return (
-    <div className="relative  flex items-center justify-center w-full flex-col overflow-hidden border border-gray-400 bg-white">
-      <a
-        className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
-        href="#"
-      >
-        <img className="object-cover" src={img} alt="product image" />
-        <span className="absolute top-2 right-0 rounded-full bg-black px-2 py-0.5 text-center text-xs font-medium text-white">
+    <div className="relative flex flex-col justify-between w-full h-full overflow-hidden border border-gray-400  hover:-translate-y-2 transform transition duration-200">
+      <div className="relative cursor-pointer mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
+        <img className="object-cover mx-auto" src={img} alt="product image" />
+        <span className="absolute top-2 right-0 rounded-full bg-gray-800 px-2 py-0.5 text-center text-xs font-medium text-white">
           {brand_name}
         </span>
-      </a>
+      </div>
 
-      <div className="mt-4 px-5 pb-5">
+      <div className="flex flex-col justify-between flex-grow mt-4 px-5 pb-5">
         <a href="">
           <h5 className="text-xl tracking-tight font-medium text-slate-900">
             {name}
           </h5>
         </a>
+
         <p className="text-sm mt-3 mb-2">{description}</p>
-        <div className="mt-2 mb-2 flex items-center justify-between">
+
+        <div className="mt-2 mb-1 flex items-center justify-between">
           <p>
             <span className="text-md font-medium text-red-500">
               {price.toLocaleString()} Tk
@@ -46,7 +38,9 @@ const ProductCard = ({ product }) => {
             </p>
           </div>
         </div>
+
         <p className="mb-3 text-sm">{formattedDate}</p>
+
         <a
           href=""
           className="flex items-center justify-center bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"

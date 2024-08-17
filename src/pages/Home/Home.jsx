@@ -124,8 +124,8 @@ const Home = () => {
             <input
               type="text"
               name="name"
-              className="w-full border h-11 p-4 pr-8 rounded-full border-gray-400"
-              placeholder="Search Laptop"
+              className="w-full border h-10 p-4 pr-8 rounded-md border-gray-400"
+              placeholder="Search product name"
             />
             <button
               className="absolute top-1/2 right-2 hover:scale-125 transition duration-150 ease-in-out transform -translate-x-1/2 -translate-y-1/2"
@@ -179,11 +179,11 @@ const Home = () => {
 
       {isLoading && (
         <div className="flex min-h-[70vh] justify-center items-center px-6 lg:px-12">
-          <ReactLoading type="spin" color="red" height={40} width={40} />
+          <ReactLoading type="spin" color="red" height={35} width={35} />
         </div>
       )}
       {products?.length === 0 && !isLoading && (
-        <div className="max-w-sm mx-auto min-h-[65vh] flex flex-col items-center justify-center py-8 px-4 text-center">
+        <div className="max-w-sm mx-auto min-h-[50vh] flex flex-col items-center justify-center py-8 px-4 text-center">
           <svg
             className="w-12 h-12 dark:text-gray-400 text-gray-700"
             stroke="currentColor"
@@ -216,11 +216,11 @@ const Home = () => {
       </div>
       {/* Pagination button */}
       {count > 8 && (
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-12 mb-6">
           <button
             disabled={currentPage === 1}
             onClick={() => handlePaginationBtn(currentPage - 1)}
-            className="px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-indigo-600  hover:text-white"
+            className="px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200  disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-gray-800  hover:text-white"
           >
             <div className="flex items-center -mx-1">
               <span className="mx-1 text-sm">previous</span>
@@ -232,8 +232,8 @@ const Home = () => {
               onClick={() => handlePaginationBtn(btnNum)}
               key={btnNum}
               className={`hidden ${
-                currentPage === btnNum ? "bg-indigo-600 text-white" : ""
-              }  px-4 border  mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-indigo-600  hover:text-white`}
+                currentPage === btnNum ? "bg-gray-800 text-white" : ""
+              }  px-4 border border-gray-400 text-sm  mx-1 transition-colors duration-300 transform  sm:inline hover:bg-gray-800  hover:text-white`}
             >
               {btnNum}
             </button>
@@ -242,7 +242,7 @@ const Home = () => {
           <button
             disabled={currentPage === numberOfPages}
             onClick={() => handlePaginationBtn(currentPage + 1)}
-            className="px-4 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-indigo-600 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500"
+            className="px-4 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200  hover:bg-gray-800 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500"
           >
             <div className="flex items-center -mx-1">
               <span className="mx-1 text-sm">Next</span>

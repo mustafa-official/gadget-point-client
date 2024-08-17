@@ -43,9 +43,9 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
   return (
-    <div className="mt-28">
+    <div className="mt-20 sm:mt-28 container mx-auto py-4 px-4 flex items-center">
       {/* Form Section */}
-      <div className="max-w-lg w-full mx-auto border border-red-600 rounded-xl p-8">
+      <div className="max-w-lg w-full mx-auto border border-gray-800 rounded-xl p-8">
         <form onSubmit={handleSignIn}>
           {/* Header */}
           <div className="mb-12">
@@ -124,7 +124,7 @@ const Login = () => {
             <button
               disabled={loading}
               type="submit"
-              className="disabled:cursor-not-allowed cursor-pointer w-full h-10 px-6 text-sm font-semibold tracking-wider rounded-full text-white bg-gray-800 hover:bg-[#222] focus:outline-none"
+              className="disabled:cursor-not-allowed cursor-pointer w-full h-11 px-6 text-sm font-semibold tracking-wider rounded-full text-white bg-gray-800 hover:bg-[#222] focus:outline-none"
             >
               {loading ? (
                 <ImSpinner3 className="animate-spin m-auto"></ImSpinner3>
@@ -147,7 +147,7 @@ const Login = () => {
           disabled={loading}
           onClick={handleGoogleSignIn}
           type="submit"
-          className="disabled:cursor-not-allowed cursor-pointer w-full flex items-center justify-center gap-4 py-3 px-6 text-sm font-semibold tracking-wider text-gray-800 border border-gray-300 rounded-full bg-gray-50 hover:bg-gray-100 focus:outline-none"
+          className="disabled:cursor-not-allowed cursor-pointer w-full flex items-center justify-center gap-4 py-2 px-6 text-sm font-semibold tracking-wider text-gray-800 border border-gray-300 rounded-full bg-gray-50 hover:bg-gray-100 focus:outline-none"
         >
           <svg className="w-6 h-6 mx-2" viewBox="0 0 40 40">
             <path
