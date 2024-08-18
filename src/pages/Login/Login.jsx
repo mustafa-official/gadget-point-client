@@ -48,13 +48,12 @@ const Login = () => {
       <div className="max-w-lg w-full mx-auto border border-gray-800 rounded-xl p-8">
         <form onSubmit={handleSignIn}>
           {/* Header */}
-          <div className="mb-12">
+          <div className="mb-8">
             <h3 className="text-gray-800 text-4xl font-extrabold">Sign In</h3>
           </div>
 
           {/* Email Input */}
           <div>
-            <label className="text-gray-800 text-xs block mb-2">Email</label>
             <div className="relative flex items-center">
               <input
                 name="email"
@@ -67,8 +66,7 @@ const Login = () => {
           </div>
 
           {/* Password Input */}
-          <div className="mt-8">
-            <label className="text-gray-800 text-xs block mb-2">Password</label>
+          <div className="mt-4">
             <div className="relative flex items-center">
               <input
                 name="password"
@@ -120,7 +118,7 @@ const Login = () => {
           </div>
 
           {/* Sign In Button */}
-          <div className="mt-12">
+          <div className="mt-8">
             <button
               disabled={loading}
               type="submit"

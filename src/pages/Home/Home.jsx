@@ -175,8 +175,8 @@ const Home = () => {
       </div>
 
       {isLoading && (
-        <div className="fixed inset-0 flex justify-center items-center bg-white z-50">
-          <ReactLoading type="spin" color="red" height={35} width={35} />
+        <div className="flex justify-center min-h-[60vh] items-center">
+          <ReactLoading type="spin" color="red" height={30} width={30} />
         </div>
       )}
 

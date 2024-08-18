@@ -52,12 +52,11 @@ const Register = () => {
       <div className="max-w-lg w-full mx-auto border border-gray-800 rounded-xl p-8">
         <form onSubmit={handleSignUP}>
           {/* Header */}
-          <div className="mb-12">
+          <div className="mb-8">
             <h3 className="text-gray-800 text-4xl font-extrabold">Sign Up</h3>
           </div>
 
           <div>
-            <label className="text-gray-800 text-xs block mb-2">Name</label>
             <div className="relative flex items-center">
               <input
                 type="text"
@@ -69,8 +68,7 @@ const Register = () => {
             </div>
           </div>
           {/* Email Input */}
-          <div className="mt-8">
-            <label className="text-gray-800 text-xs block mb-2">Email</label>
+          <div className="mt-4">
             <div className="relative flex items-center">
               <input
                 name="email"
@@ -83,8 +81,8 @@ const Register = () => {
           </div>
 
           {/* Password Input */}
-          <div className="mt-8">
-            <label className="text-gray-800 text-xs block mb-2">Password</label>
+          <div className="mt-4">
+          
             <div className="relative flex items-center">
               <input
                 name="password"
@@ -110,7 +108,7 @@ const Register = () => {
           </div>
 
           {/* Sign In Button */}
-          <div className="mt-12">
+          <div className="mt-8">
             <button
               disabled={loading}
               type="submit"
